@@ -33,7 +33,7 @@ class PlayerField extends StatelessWidget {
                 Text(playerName,
                     style: const TextStyle(color: Colors.white, fontSize: 20)),
                 Text(playerTeamName,
-                    style: const TextStyle(color: Colors.white, fontSize: 8))
+                    style: const TextStyle(color: Colors.white, fontSize: 10))
               ],
             )
           ],

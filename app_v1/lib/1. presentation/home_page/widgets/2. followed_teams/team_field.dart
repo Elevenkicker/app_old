@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class TeamField extends StatelessWidget {
   const TeamField({
     Key? key,
-    required this.playerName,
-    required this.playerTeamName,
+    required this.teamName,
+    required this.teamLeagueName,
   }) : super(key: key);
 
-  final String playerName;
-  final String playerTeamName;
+  final String teamName;
+  final String teamLeagueName;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +32,11 @@ class TeamField extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(playerName,
+                  Text(teamName,
                       style:
                           const TextStyle(color: Colors.white, fontSize: 20)),
-                  Text(playerTeamName,
-                      style: const TextStyle(color: Colors.white, fontSize: 8))
+                  Text(teamLeagueName,
+                      style: const TextStyle(color: Colors.white, fontSize: 10))
                 ],
               )
             ],

@@ -7,9 +7,13 @@ class FollowedLeagues extends StatelessWidget {
   const FollowedLeagues({
     Key? key,
     required this.title,
+    // required this.addFavouriteLeagueEvent,
+    // required this.favouriteLeagues,
   }) : super(key: key);
 
   final String title;
+  // final Function addFavouriteLeagueEvent;
+  // final List<LeagueModel> favouriteLeagues;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +33,14 @@ class FollowedLeagues extends StatelessWidget {
             ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 3,
+              itemCount: 0,
               separatorBuilder: (BuildContext context, int index) =>
                   const Gap(10),
               itemBuilder: (BuildContext context, int index) =>
                   const LeagueField(
-                      playerName: "Flavio Aliu", playerTeamName: "SC Freiburg"),
+                      leagueName: "favouriteLeagues[index].leagueName",
+                      leagueRegionName:
+                          "favouriteLeagues[index].leagueRegionName"),
             ),
             const SizedBox(height: 10),
             SizedBox(
@@ -46,7 +52,10 @@ class FollowedLeagues extends StatelessWidget {
                         const Color.fromRGBO(35, 60, 128, 1)),
                     elevation: MaterialStateProperty.all(5),
                   ),
-                  onPressed: null),
+                  onPressed: () {
+                    print("Add Player Button was pressed");
+                    // addFavouriteLeagueEvent();
+                  }),
             ),
           ],
         ),
