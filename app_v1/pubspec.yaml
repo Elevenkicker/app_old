@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^2.3.1
+  gap: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -59,8 +60,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/player_placeholder_image.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -80,10 +81,10 @@ flutter:
         - asset: assets/fonts/LeagueGothic-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
+    - family: Elevenkicker
+      fonts:
+        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Regular.ttf
+        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Bold.ttf
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,

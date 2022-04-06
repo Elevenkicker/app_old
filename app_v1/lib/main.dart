@@ -1,6 +1,5 @@
+import 'package:app_v1/presentation/home_page/home_page.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/home_screen/home_screen.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -23,8 +22,11 @@ class MyApp extends StatelessWidget {
           style: TextStyle(fontFamily: "LeagueGothic", fontSize: 45),
         ),
       ),
-      body: const HomeScreen(),
+      body: const HomePage(),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white54,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
