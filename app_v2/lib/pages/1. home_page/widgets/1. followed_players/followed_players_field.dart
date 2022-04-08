@@ -1,10 +1,11 @@
+import 'package:app_v2/data.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import 'league_field.dart';
+import 'player_item.dart';
 
-class FollowedLeagues extends StatelessWidget {
-  const FollowedLeagues({
+class FollowedPlayers extends StatelessWidget {
+  const FollowedPlayers({
     Key? key,
     required this.title,
   }) : super(key: key);
@@ -24,20 +25,26 @@ class FollowedLeagues extends StatelessWidget {
         child: Column(
           children: [
             Text(title,
-                style: const TextStyle(color: Colors.white, fontSize: 30)),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontFamily: "Elenvenkicker",
+                  fontWeight: FontWeight.w600,
+                  fontSize: 30,
+                )),
             const SizedBox(height: 20),
             ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 1,
+              itemCount: DUMMY_PLAYERS.length,
               separatorBuilder: (BuildContext context, int index) =>
                   const Gap(10),
-              itemBuilder: (BuildContext context, int index) =>
-                  const LeagueField(
-                      leagueName: "Bezirksliga Freiburg",
-                      leagueRegionName: "Südbaden"),
+              itemBuilder: (BuildContext context, int index) => PlayerItem(
+                playerName: DUMMY_PLAYERS[index].playerName,
+                playerTeamName: DUMMY_PLAYERS[index].playerTeamName,
+                playerId: DUMMY_PLAYERS[index].playerId,
+              ),
             ),
-            const SizedBox(height: 10),
+            const Gap(10),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

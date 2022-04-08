@@ -1,9 +1,11 @@
+import 'package:app_v2/data.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'player_field.dart';
 
-class FollowedPlayers extends StatelessWidget {
-  const FollowedPlayers({
+import 'league_item.dart';
+
+class FollowedLeagues extends StatelessWidget {
+  const FollowedLeagues({
     Key? key,
     required this.title,
   }) : super(key: key);
@@ -23,21 +25,25 @@ class FollowedPlayers extends StatelessWidget {
         child: Column(
           children: [
             Text(title,
-                style: const TextStyle(color: Colors.white, fontSize: 30)),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: ListView.separated(
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontFamily: "Elenvenkicker",
+                  fontWeight: FontWeight.w600,
+                )),
+            const SizedBox(height: 20),
+            ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 1,
+                itemCount: DUMMY_LEAGUES.length,
                 separatorBuilder: (BuildContext context, int index) =>
                     const Gap(10),
-                itemBuilder: (BuildContext context, int index) =>
-                    const PlayerField(
-                        playerName: "Flavio Aliu",
-                        playerTeamName: "SC Freiburg"),
-              ),
-            ),
+                itemBuilder: (BuildContext context, int index) => LeagueField(
+                      leagueName: DUMMY_LEAGUES[index].leagueName,
+                      leagueRegionName: DUMMY_LEAGUES[index].leagueRegionName,
+                      leagueId: DUMMY_LEAGUES[index].leagueId,
+                    )),
+            const SizedBox(height: 10),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -48,7 +54,7 @@ class FollowedPlayers extends StatelessWidget {
                     elevation: MaterialStateProperty.all(5),
                   ),
                   onPressed: () {
-                    print("Add Player Button was pressed");
+                    print("Add League Button was pressed");
                   }),
             ),
           ],

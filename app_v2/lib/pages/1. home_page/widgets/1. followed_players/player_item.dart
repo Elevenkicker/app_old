@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class PlayerField extends StatelessWidget {
-  const PlayerField({
+class PlayerItem extends StatelessWidget {
+  const PlayerItem({
     Key? key,
+    required this.playerId,
     required this.playerName,
     required this.playerTeamName,
   }) : super(key: key);
 
+  final int playerId;
   final String playerName;
   final String playerTeamName;
 
@@ -16,7 +18,7 @@ class PlayerField extends StatelessWidget {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(29, 52, 114, 1),
+        color: const Color.fromRGBO(35, 60, 128, 0.3),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(
@@ -31,9 +33,20 @@ class PlayerField extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(playerName,
-                    style: const TextStyle(color: Colors.white, fontSize: 20)),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Elenvenkicker",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    )),
+                const Gap(1),
                 Text(playerTeamName,
-                    style: const TextStyle(color: Colors.white, fontSize: 10))
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Elenvenkicker",
+                      fontWeight: FontWeight.w200,
+                      fontSize: 10,
+                    ))
               ],
             )
           ],

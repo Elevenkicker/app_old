@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class TeamField extends StatelessWidget {
   const TeamField({
     Key? key,
+    required this.teamId,
     required this.teamName,
     required this.teamLeagueName,
   }) : super(key: key);
 
+  final int teamId;
   final String teamName;
   final String teamLeagueName;
+
+  void selectTeam(BuildContext context) {
+    Navigator.of(context).pushNamed("/teamPage", arguments: {
+      "teamId": teamId,
+      "teamName": teamName,
+      "teamLeagueName": teamLeagueName,
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,27 +32,37 @@ class TeamField extends StatelessWidget {
               MaterialStateProperty.all(const Color.fromRGBO(35, 60, 128, 1)),
           elevation: MaterialStateProperty.all(5),
         ),
-        onPressed: null,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: Row(
             children: [
-              Image.asset("assets/images/player_placeholder_image.png"),
+              Image.asset("assets/images/vereinslogos/$teamId.png"),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(teamName,
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 20)),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: "Elenvenkicker",
+                        fontWeight: FontWeight.w400,
+                      )),
+                  const Gap(1),
                   Text(teamLeagueName,
-                      style: const TextStyle(color: Colors.white, fontSize: 10))
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontFamily: "Elenvenkicker",
+                        fontWeight: FontWeight.w200,
+                      ))
                 ],
               )
             ],
           ),
         ),
+        onPressed: () => selectTeam(context),
       ),
     );
   }

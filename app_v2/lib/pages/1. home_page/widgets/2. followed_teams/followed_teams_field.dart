@@ -1,7 +1,7 @@
+import 'package:app_v2/data.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
-import 'team_field.dart';
+import 'team_item.dart';
 
 class FollowedTeams extends StatelessWidget {
   const FollowedTeams({
@@ -24,18 +24,25 @@ class FollowedTeams extends StatelessWidget {
         child: Column(
           children: [
             Text(title,
-                style: const TextStyle(color: Colors.white, fontSize: 30)),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontFamily: "Elenvenkicker",
+                  fontWeight: FontWeight.w600,
+                )),
             const SizedBox(height: 20),
             ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 1,
+              itemCount: 2,
               separatorBuilder: (BuildContext context, int index) =>
                   const Gap(10),
-              itemBuilder: (BuildContext context, int index) => const TeamField(
-                  teamName: "SC freiburg", teamLeagueName: "1. Bundesliga"),
+              itemBuilder: (BuildContext context, int index) => TeamField(
+                  teamName: DUMMY_TEAMS[index].teamName,
+                  teamLeagueName: DUMMY_TEAMS[index].leagueName,
+                  teamId: DUMMY_TEAMS[index].teamId),
             ),
-            const SizedBox(height: 10),
+            const Gap(10),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
