@@ -1,3 +1,4 @@
+import 'package:app_v2/pages/5.%20league_page/league_page%20copy.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -14,7 +15,7 @@ class LeagueField extends StatelessWidget {
   final String leagueRegionName;
 
   void selectLeague(BuildContext context) {
-    Navigator.of(context).pushNamed("/leaguePage", arguments: {
+    Navigator.of(context).pushNamed(LeaguePage.pageName, arguments: {
       "leagueId": leagueId,
       "leagueName": leagueName,
       "leagueRegionName": leagueRegionName,

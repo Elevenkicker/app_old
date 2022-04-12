@@ -7,10 +7,7 @@ import 'player_item.dart';
 class FollowedPlayers extends StatelessWidget {
   const FollowedPlayers({
     Key? key,
-    required this.title,
   }) : super(key: key);
-
-  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +15,14 @@ class FollowedPlayers extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: const Color.fromRGBO(16, 38, 102, 1),
+        color: const Color.fromRGBO(25, 50, 125, 1),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.all(15),
         child: Column(
           children: [
-            Text(title,
-                style: const TextStyle(
+            const Text("Abonnierte Spieler",
+                style: TextStyle(
                   color: Colors.white,
                   fontFamily: "Elenvenkicker",
                   fontWeight: FontWeight.w600,

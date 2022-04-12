@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../data.dart';
+import '../../models/2. team_model.dart';
+
 class TeamPage extends StatefulWidget {
   static const pageName = "/teamPage";
 
@@ -10,18 +13,21 @@ class TeamPage extends StatefulWidget {
 }
 
 class _TeamPageState extends State<TeamPage> {
+  TeamModel getTeam(teamId) {
+    return DUMMY_TEAMS.firstWhere((team) => team.teamId == teamId);
+  }
+
   @override
   Widget build(BuildContext context) {
     final routeArguments =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final teamId = routeArguments["teamId"];
-    final teamName = routeArguments["teamName"];
-    final teamLeagueName = routeArguments["teamLeagueName"];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
         centerTitle: true,
-        title: const Text("Elevenkicker",
+        title: const Text("Fußball App",
             style: TextStyle(fontFamily: "LeagueGothic", fontSize: 45)),
       ),
       backgroundColor: const Color.fromRGBO(31, 52, 112, 1),
@@ -46,7 +52,7 @@ class _TeamPageState extends State<TeamPage> {
                       ),
                     ),
                     const Gap(10),
-                    Text("$teamName",
+                    Text(getTeam(teamId).teamName,
                         style:
                             const TextStyle(color: Colors.white, fontSize: 20)),
                   ],

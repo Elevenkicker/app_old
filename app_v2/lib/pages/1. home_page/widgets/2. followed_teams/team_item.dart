@@ -13,11 +13,9 @@ class TeamField extends StatelessWidget {
   final String teamName;
   final String teamLeagueName;
 
-  void selectTeam(BuildContext context) {
+  void selectTeam(BuildContext context, {teamId}) {
     Navigator.of(context).pushNamed("/teamPage", arguments: {
       "teamId": teamId,
-      "teamName": teamName,
-      "teamLeagueName": teamLeagueName,
     });
   }
 
@@ -62,7 +60,7 @@ class TeamField extends StatelessWidget {
             ],
           ),
         ),
-        onPressed: () => selectTeam(context),
+        onPressed: () => selectTeam(context, teamId: teamId),
       ),
     );
   }

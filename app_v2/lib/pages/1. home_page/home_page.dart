@@ -17,49 +17,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
-        centerTitle: true,
-        title: const Text("Elevenkicker",
-            style: TextStyle(fontFamily: "LeagueGothic", fontSize: 45)),
-      ),
-      backgroundColor: const Color.fromRGBO(31, 52, 112, 1),
+      backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               children: const [
                 Gap(20),
-                FollowedPlayers(title: "Abonnierte Spieler"),
+                FollowedPlayers(),
                 Gap(20),
-                FollowedTeams(title: "Teams"),
+                FollowedTeams(),
                 Gap(20),
-                FollowedLeagues(title: "Ligen"),
+                FollowedLeagues(),
                 Gap(20),
               ],
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white54,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search_rounded),
-            label: "Search",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sports_soccer_rounded),
-            label: "Games",
-          ),
-        ],
       ),
     );
   }

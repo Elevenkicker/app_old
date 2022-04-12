@@ -18,9 +18,11 @@ class PlayerItem extends StatelessWidget {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(35, 60, 128, 0.3),
-        borderRadius: BorderRadius.circular(5),
-      ),
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(
+            color: const Color.fromRGBO(35, 60, 128, 1),
+            width: 2,
+          )),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Row(

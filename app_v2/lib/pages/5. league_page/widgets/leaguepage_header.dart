@@ -17,7 +17,7 @@ class LeaguePageHeader extends StatelessWidget {
       width: 300,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: const Color.fromRGBO(16, 38, 102, 1),
+        color: const Color.fromRGBO(25, 50, 125, 1),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),
