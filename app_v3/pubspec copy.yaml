@@ -1,4 +1,4 @@
-name: app_v3
+name: app_v2
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -64,6 +64,7 @@ flutter:
     - assets/images/player_placeholder_image.png
     - assets/images/vereinslogos/
     - assets/images/ligalogos/
+  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -94,6 +95,9 @@ flutter:
     - family: LeagueGothic
       fonts:
         - asset: assets/fonts/LeagueGothic-Regular.ttf
+        
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
