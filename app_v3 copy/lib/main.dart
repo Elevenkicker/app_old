@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'provider/team/teams_provider.dart';
-import 'screens/gamesScreen/games_screen.dart';
-import 'screens/homeScreen/Widgets/followedLeagues/add_favourite_league.dart';
-import 'screens/homeScreen/Widgets/followedTeams/add_favourite_team.dart';
-import 'screens/homeScreen/home_screen.dart';
-import 'screens/searchScreen/search_screen.dart';
-import 'screens/teamScreen/team_screen.dart';
+import 'provider/2. team/teams_provider.dart';
+import 'screens/1. HomeScreen/Widgets/2. FollowedTeams/add_favourite_team.dart';
+import 'screens/1. HomeScreen/home_screen.dart';
+import 'screens/2. GamesScreen/games_screen.dart';
+import 'screens/3. SearchScreen/search_screen.dart';
+import 'screens/5. TeamScreen/team_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,10 +43,8 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         routes: {
           HomeScreen.screenName: (context) => const HomeScreen(),
-          AddFavouriteTeam.screenName: (context) => const AddFavouriteTeam(),
-          AddFavouriteLeague.screenName: (context) =>
-              const AddFavouriteLeague(),
           TeamScreen.screenName: (context) => const TeamScreen(),
+          AddFavouriteTeam.screenName: (context) => const AddFavouriteTeam(),
         },
         home: Scaffold(
           appBar: AppBar(
