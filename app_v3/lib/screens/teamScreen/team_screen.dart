@@ -15,9 +15,8 @@ class TeamScreen extends StatefulWidget {
 class _TeamScreenState extends State<TeamScreen> {
   @override
   Widget build(BuildContext context) {
-    final routeArguments =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
-    final teamId = routeArguments["teamId"];
+    final teamId = ModalRoute.of(context)?.settings.arguments as int;
+    final teamsData = Provider.of<TeamsProvider>(context);
     final team = Provider.of<TeamsProvider>(context).findById(teamId);
 
     return Scaffold(
@@ -64,7 +63,7 @@ class _TeamScreenState extends State<TeamScreen> {
                   child: InkWell(
                     onTap: () {
                       team.toggleFavouriteStatus();
-                      setState(() {});
+                      teamsData.updateFavouriteTeams();
                     },
                     child: SizedBox(
                       height: 27,

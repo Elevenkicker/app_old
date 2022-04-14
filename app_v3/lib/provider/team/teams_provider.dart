@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'team_provider.dart';
 
 class TeamsProvider with ChangeNotifier {
-  final List<TeamProvider> teams = [
+  final List<TeamProvider> _teams = [
     TeamProvider(
       teamId: 1,
       teamName: "Team 1",
@@ -12,7 +12,7 @@ class TeamsProvider with ChangeNotifier {
       goalsConceded: 10,
       points: 25,
       leagueId: 1,
-      isFavourite: true,
+      isFavourite: false,
     ),
     TeamProvider(
       teamId: 2,
@@ -23,7 +23,7 @@ class TeamsProvider with ChangeNotifier {
       goalsConceded: 10,
       points: 13,
       leagueId: 1,
-      isFavourite: true,
+      isFavourite: false,
     ),
     TeamProvider(
       teamId: 3,
@@ -34,7 +34,7 @@ class TeamsProvider with ChangeNotifier {
       goalsConceded: 10,
       points: 30,
       leagueId: 1,
-      isFavourite: true,
+      isFavourite: false,
     ),
     TeamProvider(
       teamId: 4,
@@ -93,24 +93,23 @@ class TeamsProvider with ChangeNotifier {
     ),
   ];
 
-  // List<TeamProvider> get teams {
-  //   return teams;
-  // }
+  List<TeamProvider> get teams {
+    return [..._teams];
+  }
+
+  void updateFavouriteTeams() {
+    notifyListeners();
+  }
 
   List<TeamProvider> get favouriteTeams {
-    return teams.where((team) => team.isFavourite).toList();
+    return _teams.where((team) => team.isFavourite).toList();
   }
 
   List<TeamProvider> get nonFavouriteTeams {
-    return teams.where((team) => team.isFavourite == false).toList();
+    return _teams.where((team) => team.isFavourite == false).toList();
   }
 
-  // toggleFavouriteStatus(TeamProvider team) {
-  //   team.toggleFavouriteStatus();
-  //   notifyListeners();
-  // }
-
   TeamProvider findById(int teamId) {
-    return teams.firstWhere((team) => team.teamId == teamId);
+    return _teams.firstWhere((team) => team.teamId == teamId);
   }
 }

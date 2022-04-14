@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider/provider.dart';
-import '../../provider/team/teams_provider.dart';
-import 'Widgets/followedLeagues/followed_leagues_field.dart';
 import 'Widgets/followedTeams/1. followed_teams_field.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Gap(20),
                 FollowedTeamsField(),
                 Gap(20),
-                FollowedLeagueField(),
+                // FollowedLeagueField(),
                 Gap(20),
               ],
             ),

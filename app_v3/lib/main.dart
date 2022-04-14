@@ -57,25 +57,34 @@ class _MyAppState extends State<MyApp> {
                 style: TextStyle(fontFamily: "LeagueGothic", fontSize: 45)),
           ),
           body: _pages[_selectedPageIndex],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: _selectedPageIndex,
-            onTap: _selectPage,
-            backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white54,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: "Home",
+          bottomNavigationBar: Stack(
+            children: [
+              BottomNavigationBar(
+                elevation: 10,
+                currentIndex: _selectedPageIndex,
+                onTap: _selectPage,
+                backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.white54,
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: "Home",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.search_rounded),
+                    label: "Search",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.sports_soccer_rounded),
+                    label: "Games",
+                  ),
+                ],
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search_rounded),
-                label: "Search",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.sports_soccer_rounded),
-                label: "Games",
-              ),
+              Container(
+                height: 0.5,
+                color: Colors.white,
+              )
             ],
           ),
         ),

@@ -67,6 +67,7 @@ class _AddFavouriteTeamState extends State<AddFavouriteTeam> {
               ),
               onTap: () {
                 nonFavouriteTeams[index].toggleFavouriteStatus();
+                teamsData.updateFavouriteTeams();
                 Navigator.of(context).pop();
               },
             );

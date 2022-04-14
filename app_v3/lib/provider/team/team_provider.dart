@@ -25,6 +25,5 @@ class TeamProvider with ChangeNotifier {
 
   toggleFavouriteStatus() {
     isFavourite = !isFavourite;
-    notifyListeners();
   }
 }

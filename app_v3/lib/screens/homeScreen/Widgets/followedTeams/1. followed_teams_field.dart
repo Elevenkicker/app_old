@@ -14,20 +14,13 @@ class FollowedTeamsField extends StatefulWidget {
 }
 
 class _FollowedTeamsFieldState extends State<FollowedTeamsField> {
-  void openAddFavouriteScreen(context, nonFavouriteTeams) {
-    Navigator.of(context)
-        .pushNamed(AddFavouriteTeam.screenName, arguments: nonFavouriteTeams)
-        .then((_) {
-      setState(() {});
-    });
+  void openAddFavouriteScreen(context) {
+    Navigator.of(context).pushNamed(AddFavouriteTeam.screenName);
   }
 
   void openTeamScreen(team) {
-    Navigator.of(context).pushNamed(TeamScreen.screenName, arguments: {
-      "teamId": team.teamId,
-    }).then((_) {
-      setState(() {});
-    });
+    Navigator.of(context)
+        .pushNamed(TeamScreen.screenName, arguments: team.teamId);
   }
 
   @override
@@ -74,8 +67,7 @@ class _FollowedTeamsFieldState extends State<FollowedTeamsField> {
                       const Color.fromRGBO(35, 60, 128, 1)),
                   elevation: MaterialStateProperty.all(5),
                 ),
-                onPressed: () => openAddFavouriteScreen(
-                    context, teamsData.nonFavouriteTeams),
+                onPressed: () => openAddFavouriteScreen(context),
               ),
             ),
           ],
