@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    print("Rebuild Home Screen");
     return Scaffold(
       backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
       body: Center(

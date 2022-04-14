@@ -25,6 +25,7 @@ class _FollowedTeamsFieldState extends State<FollowedTeamsField> {
 
   @override
   Widget build(BuildContext context) {
+    print("Rebuild Followed Teams Field");
     final teamsData = Provider.of<TeamsProvider>(context);
     final teams = teamsData.favouriteTeams;
 
