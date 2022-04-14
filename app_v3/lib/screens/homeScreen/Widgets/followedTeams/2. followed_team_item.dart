@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import '../../../../provider/team/team_provider.dart';
-import '../../../teamScreen/team_screen.dart';
 
 class FollowedTeamItem extends StatelessWidget {
   const FollowedTeamItem({
     Key? key,
+    required this.openTeamScreen,
   }) : super(key: key);
+
+  final Function openTeamScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +53,7 @@ class FollowedTeamItem extends StatelessWidget {
               ],
             ),
           ),
-          onPressed: () {
-            Navigator.of(context).pushNamed(TeamScreen.screenName, arguments: {
-              "teamId": team.teamId,
-            });
-          }),
+          onPressed: () => openTeamScreen(team)),
     );
   }
 }

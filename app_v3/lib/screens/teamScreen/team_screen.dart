@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/team/teams_provider.dart';
 
 class TeamScreen extends StatefulWidget {
   static const screenName = "/teamScreen";
@@ -15,14 +18,13 @@ class _TeamScreenState extends State<TeamScreen> {
     final routeArguments =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final teamId = routeArguments["teamId"];
-
-    // final loadedTeam = Provider.of<TeamsProvider>(context).findById(teamId);
+    final team = Provider.of<TeamsProvider>(context).findById(teamId);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
         centerTitle: true,
-        title: const Text("Fußball App",
+        title: const Text("Elevenkicker",
             style: TextStyle(fontFamily: "LeagueGothic", fontSize: 45)),
       ),
       backgroundColor: const Color.fromRGBO(31, 52, 112, 1),
@@ -49,21 +51,27 @@ class _TeamScreenState extends State<TeamScreen> {
                           ),
                         ),
                         const Gap(10),
-                        const Text("loadedTeam.teamName",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 20)),
+                        Text(team.teamName,
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 20)),
                       ],
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 10,
-                  right: 10,
+                  top: 15,
+                  right: 15,
                   child: InkWell(
+                    onTap: () {
+                      team.toggleFavouriteStatus();
+                      setState(() {});
+                    },
                     child: SizedBox(
-                      height: 50,
+                      height: 27,
                       child: Image.asset(
-                        "assets/images/abonnierenButton/abonnieren",
+                        team.isFavourite
+                            ? "assets/images/abonnierenButton/abonniert.png"
+                            : "assets/images/abonnierenButton/abonnieren.png",
                       ),
                     ),
                   ),

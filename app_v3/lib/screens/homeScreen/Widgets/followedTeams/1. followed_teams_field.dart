@@ -1,3 +1,4 @@
+import 'package:app_v3/screens/teamScreen/team_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -13,11 +14,18 @@ class FollowedTeamsField extends StatefulWidget {
 }
 
 class _FollowedTeamsFieldState extends State<FollowedTeamsField> {
-  void openAddFavouritePage(context, nonFavouriteTeams) {
-    print(nonFavouriteTeams);
+  void openAddFavouriteScreen(context, nonFavouriteTeams) {
     Navigator.of(context)
         .pushNamed(AddFavouriteTeam.screenName, arguments: nonFavouriteTeams)
         .then((_) {
+      setState(() {});
+    });
+  }
+
+  void openTeamScreen(team) {
+    Navigator.of(context).pushNamed(TeamScreen.screenName, arguments: {
+      "teamId": team.teamId,
+    }).then((_) {
       setState(() {});
     });
   }
@@ -53,7 +61,7 @@ class _FollowedTeamsFieldState extends State<FollowedTeamsField> {
                   const Gap(10),
               itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
                 value: teams[i],
-                child: const FollowedTeamItem(),
+                child: FollowedTeamItem(openTeamScreen: openTeamScreen),
               ),
             ),
             const Gap(10),
@@ -66,8 +74,8 @@ class _FollowedTeamsFieldState extends State<FollowedTeamsField> {
                       const Color.fromRGBO(35, 60, 128, 1)),
                   elevation: MaterialStateProperty.all(5),
                 ),
-                onPressed: () =>
-                    openAddFavouritePage(context, teamsData.nonFavouriteTeams),
+                onPressed: () => openAddFavouriteScreen(
+                    context, teamsData.nonFavouriteTeams),
               ),
             ),
           ],
