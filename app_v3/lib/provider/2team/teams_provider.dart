@@ -2,30 +2,30 @@ import 'package:flutter/material.dart';
 
 class TeamProvider with ChangeNotifier {
   TeamProvider({
-    required this.id,
-    required this.name,
-    required this.parentId,
-    required this.parentName,
-    required this.gamesPlayed,
-    required this.goalsScored,
-    required this.goalsConceded,
-    required this.points,
-    required this.isFavourite,
+    this.id,
+    this.name,
+    this.parentId,
+    this.parentName,
+    this.gamesPlayed,
+    this.goalsScored,
+    this.goalsConceded,
+    this.points,
+    this.isFavourite,
   });
 
-  final int id;
-  final String name;
-  final int parentId;
-  final String parentName;
-  final int gamesPlayed;
-  final int goalsScored;
-  final int goalsConceded;
-  final int points;
+  final int? id;
+  final String? name;
+  final int? parentId;
+  final String? parentName;
+  final int? gamesPlayed;
+  final int? goalsScored;
+  final int? goalsConceded;
+  final int? points;
 
-  bool isFavourite = false;
+  bool? isFavourite = false;
 
   toggleFavouriteStatus() {
-    isFavourite = !isFavourite;
+    isFavourite = !isFavourite!;
   }
 }
 
@@ -130,7 +130,7 @@ class TeamsProvider with ChangeNotifier {
   }
 
   List<TeamProvider> get favouriteTeams {
-    return _teams.where((team) => team.isFavourite).toList();
+    return _teams.where((team) => team.isFavourite!).toList();
   }
 
   List<TeamProvider> get nonFavouriteTeams {

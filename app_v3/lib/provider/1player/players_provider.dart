@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 
 class PlayerProvider with ChangeNotifier {
   PlayerProvider({
-    required this.id,
-    required this.name,
-    required this.role,
-    required this.parentId,
-    required this.parentName,
-    required this.isFavourite,
+    this.id,
+    this.name,
+    this.role,
+    this.parentId,
+    this.parentName,
+    this.isFavourite,
   });
 
-  int id;
-  String name;
-  String role;
-  int parentId;
-  String parentName;
+  final int? id;
+  final String? name;
+  final String? role;
+  final int? parentId;
+  final String? parentName;
 
-  bool isFavourite = false;
+  bool? isFavourite = false;
 
   toggleFavouriteStatus() {
-    isFavourite = !isFavourite;
+    isFavourite = !isFavourite!;
   }
 }
 
@@ -76,7 +76,7 @@ class PlayersProvider with ChangeNotifier {
   }
 
   List<PlayerProvider> get favouritePlayers {
-    return _players.where((player) => player.isFavourite).toList();
+    return _players.where((player) => player.isFavourite!).toList();
   }
 
   List<PlayerProvider> get nonFavouritePlayers {

@@ -67,8 +67,40 @@ class DetailScreenHeader extends StatelessWidget {
                 right: 10,
                 child: InkWell(
                   onTap: () {
-                    toggleFavouriteStatus();
-                    updateFavourites();
+                    if (isFavourite) {
+                      showDialog(
+                        context: context,
+                        builder: (context2) => AlertDialog(
+                          title: const Text("Bist du dir sicher?"),
+                          content: Text(
+                              "Möchtest du den $name wirklich deabonnieren?"),
+                          actions: [
+                            TextButton(
+                                child: const Text("Ja"),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  toggleFavouriteStatus();
+                                  updateFavourites();
+                                }),
+                            TextButton(
+                                child: const Text("Nein"),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                }),
+                          ],
+                        ),
+                      );
+                    } else {
+                      toggleFavouriteStatus();
+                      updateFavourites();
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            backgroundColor: Colors.green,
+                            content: Text("Du hast $name abonniert"),
+                            duration: const Duration(seconds: 3)),
+                      );
+                    }
                   },
                   child: SizedBox(
                     height: 27,

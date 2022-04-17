@@ -19,21 +19,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: const [
-                Gap(20),
-                FollowedPlayersField(),
-                Gap(20),
-                FollowedTeamsField(),
-                Gap(20),
-                FollowedLeagueField(),
-                Gap(20),
-              ],
-            ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            children: const [
+              Gap(20),
+              FollowedPlayersField(),
+              Gap(20),
+              FollowedTeamsField(),
+              Gap(20),
+              FollowedLeagueField(),
+              Gap(20),
+            ],
           ),
         ),
       ),

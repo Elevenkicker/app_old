@@ -1,7 +1,8 @@
-import 'package:app_v3/provider/1player/player_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../provider/1player/players_provider.dart';
 
 class FollowedPlayerItem extends StatelessWidget {
   const FollowedPlayerItem({
@@ -28,7 +29,7 @@ class FollowedPlayerItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(player.name,
+                Text(player.name!,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -36,7 +37,7 @@ class FollowedPlayerItem extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                     )),
                 const Gap(1),
-                Text(player.parentName,
+                Text(player.parentName!,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 10,

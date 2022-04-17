@@ -17,6 +17,8 @@ class _AddFavouriteLeagueScreenState extends State<AddFavouriteLeagueScreen> {
   @override
   Widget build(BuildContext context) {
     final leaguesData = Provider.of<LeaguesProvider>(context);
+
+    final leagueData = Provider.of<LeagueProvider>(context);
     final allLeagues = leaguesData.allLeagues;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
@@ -39,8 +41,7 @@ class _AddFavouriteLeagueScreenState extends State<AddFavouriteLeagueScreen> {
                       child: Row(
                         children: [
                           Image.asset(
-                            "assets/images/ligalogos/1.png",
-                            // "assets/images/ligalogos/${leagues[index].id}.png",
+                            "assets/images/ligalogos/2.png",
                           ),
                           const Gap(10),
                           Column(
@@ -69,7 +70,7 @@ class _AddFavouriteLeagueScreenState extends State<AddFavouriteLeagueScreen> {
                   ),
                   onTap: () {
                     allLeagues[index].toggleFavouriteStatus();
-                    leaguesData.updateFavouriteLeagues();
+                    leagueData.toggleFavouriteStatus();
                     Navigator.of(context).pop();
                   });
             },

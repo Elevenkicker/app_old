@@ -1,9 +1,9 @@
+import 'package:app_v3/provider/3league/leagues_provider.dart';
 import 'package:app_v3/screens/5leagueScreen/league_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import 'package:provider/provider.dart';
-import '../../../../provider/3league/leagues_provider.dart';
 
 class FollowedLeagueItem extends StatelessWidget {
   const FollowedLeagueItem({

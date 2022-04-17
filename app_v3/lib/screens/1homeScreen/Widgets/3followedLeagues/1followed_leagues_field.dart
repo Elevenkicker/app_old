@@ -14,8 +14,9 @@ class FollowedLeagueField extends StatefulWidget {
 }
 
 class _FollowedLeagueFieldState extends State<FollowedLeagueField> {
-  void openAddFavouriteLeagueScreen(context) {
-    Navigator.of(context).pushNamed(AddFavouriteLeagueScreen.screenName);
+  void openAddFavouriteLeagueScreen(context, leaguesData) {
+    Navigator.of(context)
+        .pushNamed(AddFavouriteLeagueScreen.screenName, arguments: leaguesData);
   }
 
   void openLeagueScreen(league) {
@@ -67,7 +68,8 @@ class _FollowedLeagueFieldState extends State<FollowedLeagueField> {
                         const Color.fromRGBO(35, 60, 128, 1)),
                     elevation: MaterialStateProperty.all(5),
                   ),
-                  onPressed: () => openAddFavouriteLeagueScreen(context)),
+                  onPressed: () =>
+                      openAddFavouriteLeagueScreen(context, leaguesData)),
             ),
           ],
         ),

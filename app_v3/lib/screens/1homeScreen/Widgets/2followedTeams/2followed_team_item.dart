@@ -34,7 +34,7 @@ class FollowedTeamItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(team.name,
+                    Text(team.name!,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -42,7 +42,7 @@ class FollowedTeamItem extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                         )),
                     const Gap(1),
-                    Text(team.parentName,
+                    Text(team.parentName!,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 10,

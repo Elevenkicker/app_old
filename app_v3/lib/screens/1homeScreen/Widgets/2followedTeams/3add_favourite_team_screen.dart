@@ -46,14 +46,14 @@ class _AddFavouriteTeamScreenState extends State<AddFavouriteTeamScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            nonFavouriteTeams[index].name,
+                            nonFavouriteTeams[index].name!,
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 23,
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            nonFavouriteTeams[index].parentName,
+                            nonFavouriteTeams[index].parentName!,
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,

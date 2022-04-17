@@ -33,9 +33,9 @@ class _TeamScreenState extends State<TeamScreen> {
         body: Column(
           children: [
             DetailScreenHeader(
-              id: team.id,
-              name: team.name,
-              isFavourite: team.isFavourite,
+              id: team.id!,
+              name: team.name!,
+              isFavourite: team.isFavourite!,
               toggleFavouriteStatus: team.toggleFavouriteStatus,
               updateFavourites: teamsData.updateFavouriteTeams,
               object: team,
