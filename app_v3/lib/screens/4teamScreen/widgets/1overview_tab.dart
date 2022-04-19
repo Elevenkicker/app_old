@@ -12,13 +12,6 @@ class OverviewTab extends StatelessWidget {
 
   final int teamId;
 
-  // void chooseFormcheckArrow(TeamProvider team) {
-  //   double pointsLast5Games = team
-  //   if () {
-
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     final team = Provider.of<TeamsProvider>(context).findById(teamId);
@@ -35,7 +28,7 @@ class OverviewTab extends StatelessWidget {
               color: const Color.fromRGBO(25, 50, 125, 1),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Image.asset("assets/images/team_formcheck/3.png"),
+            child: Image.asset("assets/images/teamFormcheck/3.png"),
           ),
         ],
       ),

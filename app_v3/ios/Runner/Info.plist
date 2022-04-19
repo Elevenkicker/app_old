@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Libary Access Warning - Flavio</string>
 	<key>CFBundleDisplayName</key>
 	<string>App V3</string>
 	<key>CFBundleExecutable</key>

@@ -26,7 +26,7 @@ class DetailScreenHeader extends StatelessWidget {
     if (object.runtimeType == TeamProvider) {
       return Image.asset("assets/images/vereinslogos/${object.id}.png");
     } else if (object.runtimeType == LeagueProvider) {
-      return Image.asset("assets/images/ligalogos/${object.id}.png");
+      return Image.asset("assets/images/ligaLogos/${object.id}.png");
     } else {
       return const Text("No Image");
     }

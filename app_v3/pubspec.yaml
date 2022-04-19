@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   gap: ^2.0.0
   http: ^0.13.4
+  image_picker: ^0.8.5
   provider: ^6.0.2
 
 dev_dependencies:
@@ -55,7 +56,8 @@ flutter:
     - assets/images/vereinslogos/
     - assets/images/ligalogos/
     - assets/images/abonnierenButton/
-    - assets/images/team_formcheck/
+    - assets/images/teamFormcheck/
+    - assets/images/teamManagement/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -70,17 +72,17 @@ flutter:
     - family: Elevenkicker
       fonts:
         - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Bold.ttf
-          weight: 200
-        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-SemiBold.ttf
-          weight: 300
-        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Medium.ttf
-          weight: 400
-        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Regular.ttf
-          weight: 500
-        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Light.ttf
-          weight: 600
-        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-ExtraLight.ttf
           weight: 700
+        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-Light.ttf
+          weight: 300
+        - asset: assets/fonts/elevenkicker_fonts/Elevenkicker-ExtraLight.ttf
+          weight: 200
     - family: LeagueGothic
       fonts:
         - asset: assets/fonts/LeagueGothic-Regular.ttf
