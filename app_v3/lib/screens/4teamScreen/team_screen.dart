@@ -35,6 +35,8 @@ class _TeamScreenState extends State<TeamScreen> {
             DetailScreenHeader(
               id: team.id!,
               name: team.name!,
+              igUsername: team.igUsername,
+              fbUsername: team.fbUsername,
               isFavourite: team.isFavourite!,
               toggleFavouriteStatus: team.toggleFavouriteStatus,
               updateFavourites: teamsData.updateFavouriteTeams,

@@ -1,10 +1,17 @@
 import 'dart:io';
 
+import 'package:app_v3/provider/2team/teams_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
+
+import 'package:provider/provider.dart';
+
+import 'text_input_field_fb.dart';
+import 'text_input_field_ig.dart';
+import 'text_input_field_teamname.dart';
 
 class TeamManagementInfos extends StatefulWidget {
   const TeamManagementInfos({Key? key}) : super(key: key);
@@ -32,27 +39,32 @@ class _TeamManagementInfosState extends State<TeamManagementInfos> {
     }
   }
 
-  Widget buildImagePickerButton({required VoidCallback onClicked}) =>
-      ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          minimumSize: const Size.fromHeight(56),
-          primary: const Color.fromRGBO(35, 60, 128, 1),
-          onPrimary: Colors.white,
-          textStyle: const TextStyle(fontSize: 20),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(Icons.photo, size: 40),
-            Gap(10),
-            Text("Vereinslogo hochladen"),
-          ],
-        ),
-        onPressed: onClicked,
-      );
+  Widget buildImagePickerButton({required VoidCallback onClicked}) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size.fromHeight(56),
+        primary: const Color.fromRGBO(35, 60, 128, 1),
+        onPrimary: Colors.white,
+        textStyle: const TextStyle(fontSize: 20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Icon(Icons.photo, size: 40),
+          Gap(10),
+          Text("Vereinslogo hochladen"),
+        ],
+      ),
+      onPressed: onClicked,
+    );
+  }
+
+  int id = 1;
 
   @override
   Widget build(BuildContext context) {
+    TeamsProvider teamsData = Provider.of<TeamsProvider>(context);
+    TeamProvider teamData = teamsData.findById(id);
     return Column(
       children: [
         const Gap(20),
@@ -88,51 +100,31 @@ class _TeamManagementInfosState extends State<TeamManagementInfos> {
                       )),
                       child: image != null
                           ? Image.file(image!)
-                          : const FlutterLogo(size: 200),
+                          : Image.asset("assets/images/vereinslogos/$id.png"),
                     ),
                   ),
                   const Gap(20),
                   buildImagePickerButton(onClicked: () => pickImage()),
-                  TextFormField(
-                    style: const TextStyle(color: Colors.white, fontSize: 20),
-                    textInputAction: TextInputAction.send,
-                    decoration: const InputDecoration(
-                      label: Text('Vereinsname',
-                          style: TextStyle(color: Colors.white)),
-                      hintText: 'FC Freiburg',
-                      hintStyle: TextStyle(color: Colors.white60),
-                      helperText:
-                          'Vereinsnamen in der App in Beiträgen auf Facebook und Instagram',
-                      helperStyle: TextStyle(color: Colors.white38),
-                    ),
+                  const Gap(15),
+                  CustomTextInputFieldWidget(
+                    id: id,
+                    initialValue: teamData.name!,
+                    value: teamData.name,
+                    lableText: "Hier Vereinsnamen eintragen",
                   ),
-                  const Gap(10),
-                  TextFormField(
-                    style: const TextStyle(color: Colors.white, fontSize: 20),
-                    textInputAction: TextInputAction.send,
-                    decoration: const InputDecoration(
-                      label: Text('Facebook-Seitennamen',
-                          style: TextStyle(color: Colors.white)),
-                      hintText: 'FC Freiburg - Official',
-                      hintStyle: TextStyle(color: Colors.white60),
-                      helperText:
-                          'Um den Verein auf Facebook markieren zu können',
-                      helperStyle: TextStyle(color: Colors.white38),
-                    ),
+                  const Gap(15),
+                  CustomTextInputFieldIg(
+                    id: id,
+                    initialValue: "@",
+                    value: teamData.igUsername,
+                    lableText: "Hier Instagram Usernamen eintragen",
                   ),
-                  const Gap(10),
-                  TextFormField(
-                    style: const TextStyle(color: Colors.white, fontSize: 20),
-                    textInputAction: TextInputAction.send,
-                    decoration: const InputDecoration(
-                      label: Text('Instagram Benutzername',
-                          style: TextStyle(color: Colors.white)),
-                      hintText: '@fc_reiburg',
-                      hintStyle: TextStyle(color: Colors.white60),
-                      helperText:
-                          'Um den Verein auf Instagram markieren zu können',
-                      helperStyle: TextStyle(color: Colors.white38),
-                    ),
+                  const Gap(15),
+                  CustomTextInputFieldFb(
+                    id: id,
+                    initialValue: "",
+                    value: teamData.fbUsername,
+                    lableText: "Hier Facebook-Seitennamen eintragen",
                   ),
                 ],
               ),

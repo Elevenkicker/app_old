@@ -9,6 +9,8 @@ class DetailScreenHeader extends StatelessWidget {
     Key? key,
     required this.id,
     required this.name,
+    required this.igUsername,
+    required this.fbUsername,
     required this.isFavourite,
     required this.toggleFavouriteStatus,
     required this.updateFavourites,
@@ -18,6 +20,8 @@ class DetailScreenHeader extends StatelessWidget {
   final int id;
   final String name;
   final bool isFavourite;
+  final String? igUsername;
+  final String? fbUsername;
   final Function toggleFavouriteStatus;
   final Function updateFavourites;
   final Object object;
@@ -55,9 +59,39 @@ class DetailScreenHeader extends StatelessWidget {
                         child: DisplayLogo(object),
                       ),
                       const Gap(10),
-                      Text(name,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 17)),
+                      Text(
+                        name,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 17),
+                      ),
+                      const Gap(10),
+                      Column(
+                        children: [
+                          igUsername != null
+                              ? Text(
+                                  "Instagram: $igUsername",
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                  ),
+                                )
+                              : const Gap(0),
+                          const Gap(10),
+                          fbUsername != null
+                              ? Text(
+                                  fbUsername != null
+                                      ? "Instagram: $fbUsername"
+                                      : "",
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                  ),
+                                )
+                              : const Gap(0),
+                        ],
+                      ),
                     ],
                   ),
                 ),

@@ -11,18 +11,21 @@ class TeamProvider with ChangeNotifier {
     this.goalsConceded,
     this.points,
     this.isFavourite,
+    this.igUsername,
+    this.fbUsername,
   });
 
   final int? id;
-  final String? name;
+  String? name;
   final int? parentId;
   final String? parentName;
   final int? gamesPlayed;
   final int? goalsScored;
   final int? goalsConceded;
   final int? points;
-
   bool? isFavourite = false;
+  String? igUsername = "";
+  String? fbUsername = "";
 
   toggleFavouriteStatus() {
     isFavourite = !isFavourite!;
@@ -143,5 +146,18 @@ class TeamsProvider with ChangeNotifier {
 
   TeamProvider getLast5Games(int id) {
     return _teams.firstWhere((team) => team.id == id);
+  }
+
+  void updateName(int id, String name) {
+    _teams.firstWhere((team) => team.id == id).name = name;
+    notifyListeners();
+  }
+
+  void updateIgUsername(int id, String igUsername) {
+    _teams.firstWhere((team) => team.id == id).igUsername = igUsername;
+  }
+
+  void updateFbUsername(int id, String fbUsername) {
+    _teams.firstWhere((team) => team.id == id).fbUsername = fbUsername;
   }
 }

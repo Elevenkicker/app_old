@@ -30,6 +30,8 @@ class _LeagueScreenState extends State<LeagueScreen> {
       body: DetailScreenHeader(
         id: league.id! as int,
         name: league.name!,
+        igUsername: "",
+        fbUsername: "",
         isFavourite: league.isFavourite!,
         toggleFavouriteStatus: league.toggleFavouriteStatus,
         updateFavourites: leaguesData.updateFavouriteLeagues,
