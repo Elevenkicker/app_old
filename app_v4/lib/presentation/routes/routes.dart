@@ -71,14 +71,4 @@ import '../screens/teamPage/team_page.dart';
     ),
   ],
 )
-class $AppRouter {
-
-
-  Route generateRoute
-
-
-
-
-
-
-}
+class $AppRouter {}
