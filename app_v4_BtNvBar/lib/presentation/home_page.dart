@@ -1,8 +1,6 @@
+import 'package:app_v4/presentation/routes/routes.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-
-import '../routes/routes.gr.dart';
 import 'widgets/custom_app_drawer.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,7 +11,7 @@ class HomePage extends StatelessWidget {
     return AutoTabsScaffold(
         backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
         appBarBuilder: (context, tabsRouter) => AppBar(
-              leading: const AutoBackButton(),
+              // leading: const AutoBackButton(),
               backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
               centerTitle: true,
               title: const Text(
@@ -30,29 +28,25 @@ class HomePage extends StatelessWidget {
         bottomNavigationBuilder: (context, TabsRouter) {
           return Stack(
             children: [
-              SalomonBottomBar(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              BottomNavigationBar(
+                elevation: 10,
                 currentIndex: TabsRouter.activeIndex,
                 onTap: TabsRouter.setActiveIndex,
-                items: [
-                  SalomonBottomBarItem(
-                    icon: const Icon(Icons.home),
-                    title: const Text('home'),
-                    selectedColor: Colors.white,
-                    unselectedColor: Colors.white54,
+                backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.white54,
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: "Home",
                   ),
-                  SalomonBottomBarItem(
-                    icon: const Icon(Icons.search),
-                    title: const Text('Search'),
-                    selectedColor: Colors.white,
-                    unselectedColor: Colors.white54,
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.search_rounded),
+                    label: "Search",
                   ),
-                  SalomonBottomBarItem(
-                    icon: const Icon(Icons.sports_soccer),
-                    title: const Text('Matches'),
-                    selectedColor: Colors.white,
-                    unselectedColor: Colors.white54,
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.sports_soccer_rounded),
+                    label: "Games",
                   ),
                 ],
               ),

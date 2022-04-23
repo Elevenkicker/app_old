@@ -13,13 +13,13 @@
 import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:flutter/material.dart' as _i9;
 
-import '../presentation/home_page.dart' as _i1;
-import '../presentation/screens/favouritesPage/favourites_page.dart' as _i3;
-import '../presentation/screens/leaguePage/league_page.dart' as _i5;
-import '../presentation/screens/matchesPage/matches_page.dart' as _i7;
-import '../presentation/screens/matchPage/match_page.dart' as _i8;
-import '../presentation/screens/searchPage/search_page.dart' as _i6;
-import '../presentation/screens/teamPage/team_page.dart' as _i4;
+import '../home_page.dart' as _i1;
+import '../screens/favouritesPage/favourites_page.dart' as _i3;
+import '../screens/leaguePage/league_page.dart' as _i5;
+import '../screens/matchesPage/matches_page.dart' as _i7;
+import '../screens/matchPage/match_page.dart' as _i8;
+import '../screens/searchPage/search_page.dart' as _i6;
+import '../screens/teamPage/team_page.dart' as _i4;
 
 class AppRouter extends _i2.RootStackRouter {
   AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])

@@ -16,6 +16,7 @@ class FavouritesPage extends StatelessWidget {
         child: Column(
           children: [
             const Gap(20),
+            const Gap(20),
             FollowedPlayersField(title: 'Players'),
             const Gap(20),
             FollowedTeamsField(title: 'Teams'),

@@ -1,8 +1,8 @@
+import 'package:app_v4/presentation/routes/routes.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../../data/models/team.dart';
-import '../../../../../routes/routes.gr.dart';
 
 class TeamFieldItem extends StatelessWidget {
   const TeamFieldItem({

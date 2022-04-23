@@ -1,5 +1,5 @@
+import 'package:app_v4/presentation/routes/routes.gr.dart';
 import 'package:flutter/material.dart';
-import 'routes/routes.gr.dart';
 
 void main() {
   runApp(const ElevenkickerApp());
