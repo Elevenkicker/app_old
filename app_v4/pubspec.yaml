@@ -27,14 +27,19 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  auto_route: ^3.2.4
   cupertino_icons: ^1.0.2
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
   gap: ^2.0.0
   http: ^0.13.4
+  salomon_bottom_bar: ^3.3.0
 
 dev_dependencies:
+  auto_route_generator: ^3.2.3
+  build_runner: ^2.1.10
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
@@ -52,7 +57,7 @@ flutter:
 
   assets:
     - assets/images/player_placeholder_image.png
-    - assets/images/vereinslogos/
+    - assets/images/vereinslogos/335000/
     - assets/images/ligalogos/
     - assets/images/abonnierenButton/
     - assets/images/teamFormcheck/

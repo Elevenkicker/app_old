@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 
-import '1presentation/screens/router.dart';
+import 'presentation/routes/routes.gr.dart';
 
 void main() {
-  runApp(ElevenkickerApp(
-    router: AppRouter(),
-  ));
+  runApp(const ElevenkickerApp());
 }
 
 class ElevenkickerApp extends StatelessWidget {
   const ElevenkickerApp({
     Key? key,
-    required this.router,
   }) : super(key: key);
-
-  final AppRouter? router;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final _appRouter = AppRouter();
+    return MaterialApp.router(
+      title: 'Elevenkicker App',
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: router?.generateRoute,
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }
