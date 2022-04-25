@@ -25,13 +25,13 @@ class Home extends StatelessWidget {
           SearchRouter(),
           MatchesRouter(),
         ],
-        bottomNavigationBuilder: (context, TabsRouter) {
+        bottomNavigationBuilder: (context, tabsRouter) {
           return Stack(
             children: [
               BottomNavigationBar(
                 elevation: 10,
-                currentIndex: TabsRouter.activeIndex,
-                onTap: TabsRouter.setActiveIndex,
+                currentIndex: tabsRouter.activeIndex,
+                onTap: tabsRouter.setActiveIndex,
                 backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
                 selectedItemColor: Colors.white,
                 unselectedItemColor: Colors.white54,

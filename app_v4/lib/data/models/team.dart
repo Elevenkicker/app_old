@@ -1,22 +1,35 @@
 class Team {
-  final String regionName = 'Südbaden';
-  final int regionId = 1;
-  final int leagueId;
-  final String clubId;
-  final String teamId;
-  final int teamName1;
-  final String teamName2;
-  bool isFavourite = false;
-  String? igUsername = "";
-  String? fbUsername = "";
-
   Team({
-    required this.leagueId,
-    required this.clubId,
-    required this.teamId,
-    required this.teamName1,
-    required this.teamName2,
+    this.regionName,
+    this.leagueId,
+    this.clubId,
+    this.teamId,
+    this.teamName1,
+    this.officialTeamName,
+    this.teamName2,
     this.igUsername,
     this.fbUsername,
   });
+
+  bool isFavourite = false;
+  String? igUsername = "";
+  String? fbUsername = "";
+  late int regionId = 1;
+
+  late String? clubId;
+  late int? leagueId;
+  late String? officialTeamName;
+  late String? regionName;
+  late String? teamId;
+  late int? teamName1;
+  late String? teamName2;
+
+  Team.fromJson(Map value)
+      : clubId = value['clubId'],
+        leagueId = value['leagueId'],
+        officialTeamName = value['officialName'],
+        regionName = value['regionName'],
+        teamId = value['teamId'],
+        teamName1 = value['team_alternativeName1'],
+        teamName2 = value['team_alternativeName2'];
 }

@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import '../home.dart';
-import '../screens/favouritesPage/favourites_page.dart';
-import '../screens/leaguePage/league_page.dart';
-import '../screens/matchPage/match_page.dart';
-import '../screens/matchesPage/matches_page.dart';
-import '../screens/searchPage/search_page.dart';
-import '../screens/teamPage/team_page.dart';
+import '../pages/favouritesPage/favourites_page.dart';
+import '../pages/leaguePage/league_page.dart';
+import '../pages/matchPage/match_page.dart';
+import '../pages/matchesPage/matches_page.dart';
+import '../pages/searchPage/search_page.dart';
+import '../pages/teamPage/team_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -71,4 +71,4 @@ import '../screens/teamPage/team_page.dart';
     ),
   ],
 )
-class $AppRouter {}
+class AppRouter {}

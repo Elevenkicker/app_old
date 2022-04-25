@@ -1,8 +1,8 @@
-import 'package:app_v4/presentation/routes/routes.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../../data/models/team.dart';
+import '../../../../routes/routes.gr.dart';
 
 class TeamFieldItem extends StatelessWidget {
   const TeamFieldItem({
@@ -29,13 +29,13 @@ class TeamFieldItem extends StatelessWidget {
           child: Row(
             children: [
               Image.asset(
-                  "assets/images/vereinslogos/${team.leagueId}/${team.teamName1}.png"),
+                  "assets/images/vereinslogos/${team.leagueId}/${team.teamName1!}.png"),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(team.teamName2,
+                  Text(team.teamName2!,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -43,7 +43,7 @@ class TeamFieldItem extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       )),
                   const Gap(1),
-                  Text(team.regionName,
+                  Text(team.regionName!,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 10,
@@ -55,7 +55,7 @@ class TeamFieldItem extends StatelessWidget {
             ],
           ),
         ),
-        onPressed: () => context.router.push(TeamRoute(teamId: team.teamId)),
+        onPressed: () => context.router.push(TeamRoute(teamId: team.teamId!)),
       ),
     );
   }

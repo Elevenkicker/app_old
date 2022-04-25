@@ -36,15 +36,15 @@ class TeamDetailPageHeader extends StatelessWidget {
                       ),
                       const Gap(10),
                       Text(
-                        team.teamName2,
+                        team.teamName2!,
                         style:
                             const TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       Column(
                         children: [
-                          team.igUsername != null
+                          team.igUsername != ''
                               ? Text(
-                                  "Instagram: $team.igUsername",
+                                  "Instagram: ${team.igUsername}",
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     color: Colors.white,
@@ -53,10 +53,10 @@ class TeamDetailPageHeader extends StatelessWidget {
                                 )
                               : const Gap(0),
                           const Gap(10),
-                          team.fbUsername != null
+                          team.fbUsername != ''
                               ? Text(
                                   team.fbUsername != null
-                                      ? "Instagram: $team.fbUsername"
+                                      ? "Instagram: ${team.fbUsername}"
                                       : "",
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(

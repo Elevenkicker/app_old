@@ -14,19 +14,19 @@ class FollowedTeamsField extends StatelessWidget {
 
   final List<Team> favouriteTeams = [
     Team(
-      leagueId: 335000,
-      clubId: '00ES8GN9DO000013VV0AG08LVUPGND5I',
-      teamId: '011MIANVN4000000VTVG0001VTR8C1K7',
-      teamName1: 1,
-      teamName2: 'SF Eintracht Freiburg',
-    ),
+        leagueId: 335000,
+        clubId: '00ES8GN9DO000013VV0AG08LVUPGND5I',
+        teamId: '011MIANVN4000000VTVG0001VTR8C1K7',
+        teamName1: 1,
+        teamName2: 'SF Eintracht Freiburg',
+        regionName: 'Südbaden'),
     Team(
-      leagueId: 335000,
-      clubId: '00ES8GN9DO00000NVV0AG08LVUPGND5I',
-      teamId: '011MIF62LO000000VTVG0001VTR8C1K7',
-      teamName1: 2,
-      teamName2: 'SV Solvay Freiburg',
-    ),
+        leagueId: 335000,
+        clubId: '00ES8GN9DO00000NVV0AG08LVUPGND5I',
+        teamId: '011MIF62LO000000VTVG0001VTR8C1K7',
+        teamName1: 2,
+        teamName2: 'SV Solvay Freiburg',
+        regionName: 'Südbaden'),
   ];
 
   @override
