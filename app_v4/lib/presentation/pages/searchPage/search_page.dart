@@ -1,21 +1,56 @@
 import 'package:app_v4/cubit/searchCubit/search_cubit.dart';
+import 'package:app_v4/presentation/pages/searchPage/widgets/region_list.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
 import '../../routes/routes.gr.dart';
+import 'widgets/league_list.dart';
+import 'widgets/team_list.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    BlocProvider.of<SearchCubit>(context).fetchData();
-    final _controller = PageController(initialPage: 0);
-    int selectedRegion = 0;
-    int selectedLeague = 0;
+  State<SearchPage> createState() => _SearchPageState();
+}
 
+class _SearchPageState extends State<SearchPage> {
+  @override
+  void initState() {
+    BlocProvider.of<SearchCubit>(context).fetchData();
+    super.initState();
+  }
+
+  final PageController _controller = PageController();
+
+  int selectedRegion = 0;
+  int selectedLeague = 0;
+
+  void selectRegion(i) {
+    setState(() {
+      selectedRegion = i;
+      _controller.nextPage(
+          duration: const Duration(milliseconds: 600), curve: Curves.easeInOut);
+    });
+  }
+
+  void selectLeague(i) {
+    setState(() {
+      selectedLeague = i;
+      _controller.nextPage(
+          duration: const Duration(milliseconds: 600), curve: Curves.easeInOut);
+    });
+  }
+
+  openTeamPage(teamId) {
+    setState(() {
+      context.router.push(TeamRoute(teamId: teamId));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         if (state is SearchLoading) {
@@ -24,106 +59,146 @@ class SearchPage extends StatelessWidget {
               body: Center(child: CircularProgressIndicator()));
         } else if (state is SearchLoaded) {
           final regionsList = state.regionsList;
-          int leagueListLength = 0;
           return Scaffold(
             backgroundColor: const Color.fromRGBO(16, 38, 102, 1),
             body: PageView(
               controller: _controller,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                // Region List
-                ListView.separated(
-                    itemCount: regionsList.length,
-                    separatorBuilder: (context, i) => const Gap(5),
-                    itemBuilder: (context, i) {
-                      return ListTile(
-                          textColor: Colors.white,
-                          tileColor: const Color.fromRGBO(25, 50, 125, 1),
-                          title: Text(regionsList[i].regionName),
-                          subtitle: const Text('Aktiv'),
-                          onTap: () {
-                            selectedRegion = i;
-                            leagueListLength = regionsList[selectedRegion]
-                                .regionLeagues
-                                .length;
-                            print('Region $leagueListLength');
-                            _controller.nextPage(
-                                duration: const Duration(milliseconds: 600),
-                                curve: Curves.easeInOut);
-                          });
-                    }),
-                // League List
-                ListView.separated(
-                    itemCount: regionsList[selectedRegion].regionLeagues.length,
-                    separatorBuilder: (context, i) => const Gap(5),
-                    itemBuilder: (context, i) {
-                      print(
-                          'League ${regionsList[selectedRegion].regionLeagues.length}');
-                      return ListTile(
-                          leading: Image.asset("assets/images/ligalogos/1.png"),
-                          textColor: Colors.white,
-                          tileColor: const Color.fromRGBO(25, 50, 125, 1),
-                          title: Text(regionsList[selectedRegion]
-                              .regionLeagues[i]
-                              .leagueName!),
-                          subtitle: Text(regionsList[selectedRegion]
-                              .regionLeagues[i]
-                              .regionName),
-                          onTap: () {
-                            selectedLeague = i;
-                            _controller.nextPage(
-                                duration: const Duration(milliseconds: 600),
-                                curve: Curves.easeInOut);
-                          });
-                    }),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back_rounded,
-                          color: Colors.white),
-                      onPressed: () {
-                        _controller.previousPage(
-                            duration: const Duration(milliseconds: 600),
+                GestureDetector(
+                  child: RegionList(
+                    regionsList: regionsList,
+                    selectRegion: selectRegion,
+                  ),
+                  onHorizontalDragEnd: (details) {
+                    if (details.primaryVelocity! < 0) {
+                      setState(() {
+                        _controller.nextPage(
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.easeInOut);
-                        print(regionsList[selectedRegion]
-                            .regionLeagues[1]
-                            .leagueTeams[selectedLeague]);
-                      },
-                    ),
-                    Expanded(
-                      // Team List
-                      child: ListView.separated(
-                          itemCount: regionsList[selectedRegion]
-                              .regionLeagues[selectedLeague]
-                              .leagueTeams
-                              .length,
-                          separatorBuilder: (context, i) => const Gap(5),
-                          itemBuilder: (context, i) {
-                            print({
-                              regionsList[selectedRegion]
-                                  .regionLeagues[selectedLeague]
-                                  .leagueTeams[i]
-                                  .teamName2
-                            });
-                            return ListTile(
-                                leading: Image.asset(
-                                    "assets/images/vereinslogos/${regionsList[selectedRegion].regionLeagues[i].leagueTeams[selectedLeague].leagueId}/${regionsList[selectedRegion].regionLeagues[i].leagueTeams[selectedLeague].teamName1}.png"),
+                      });
+                    }
+                  },
+                ),
+                Column(
+                  children: [
+                    Container(
+                      color: const Color.fromRGBO(16, 38, 102, 1),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.arrow_back_rounded,
+                                color: Colors.white),
+                            onPressed: () {
+                              _controller.previousPage(
+                                  duration: const Duration(milliseconds: 600),
+                                  curve: Curves.easeInOut);
+                            },
+                          ),
+                          Expanded(
+                            child: ListTile(
                                 textColor: Colors.white,
                                 tileColor: const Color.fromRGBO(25, 50, 125, 1),
                                 title: Text(
-                                    '${regionsList[selectedRegion].regionLeagues[selectedLeague].leagueTeams[i].teamName2}'),
+                                  regionsList[selectedRegion].regionName,
+                                  style: const TextStyle(fontSize: 25),
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    _controller.previousPage(
+                                        duration:
+                                            const Duration(milliseconds: 600),
+                                        curve: Curves.easeInOut);
+                                  });
+                                }),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        child: LeagueList(
+                          leagueList: regionsList[selectedRegion].regionLeagues,
+                          selectLeague: selectLeague,
+                        ),
+                        onHorizontalDragEnd: (details) {
+                          if (details.primaryVelocity! > 0) {
+                            setState(() {
+                              _controller.previousPage(
+                                  duration: const Duration(milliseconds: 500),
+                                  curve: Curves.easeInOut);
+                            });
+                          } else if (details.primaryVelocity! < 0) {
+                            setState(() {
+                              _controller.nextPage(
+                                  duration: const Duration(milliseconds: 500),
+                                  curve: Curves.easeInOut);
+                            });
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      color: const Color.fromRGBO(16, 38, 102, 1),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.arrow_back_rounded,
+                                color: Colors.white),
+                            onPressed: () {
+                              _controller.previousPage(
+                                  duration: const Duration(milliseconds: 600),
+                                  curve: Curves.easeInOut);
+                            },
+                          ),
+                          Expanded(
+                            child: ListTile(
+                                // leading: Image.network(
+                                //     'http://34.159.133.82:5000/get_league_logo?apiKey=Dw8FUgy7VFrs9Gfs4VNfp6UVey6NBjd2DYy&leagueId=${regionsList[selectedRegion].regionLeagues[selectedLeague].leagueId!.toInt()}'),
+                                textColor: Colors.white,
+                                tileColor: const Color.fromRGBO(25, 50, 125, 1),
+                                title: Text(regionsList[selectedRegion]
+                                    .regionLeagues[selectedLeague]
+                                    .leagueName!),
                                 subtitle: Text(regionsList[selectedRegion]
-                                    .regionLeagues[i]
+                                    .regionLeagues[selectedLeague]
                                     .regionName),
                                 onTap: () {
-                                  context.router.push(TeamRoute(
-                                      teamId: regionsList[selectedRegion]
-                                          .regionLeagues[i]
-                                          .leagueTeams[selectedLeague]
-                                          .teamId!));
-                                });
-                          }),
+                                  setState(() {
+                                    _controller.nextPage(
+                                        duration:
+                                            const Duration(milliseconds: 600),
+                                        curve: Curves.easeInOut);
+                                  });
+                                }),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      // Team List
+                      child: GestureDetector(
+                        child: TeamList(
+                          teamList: regionsList[selectedRegion]
+                              .regionLeagues[selectedLeague]
+                              .leagueTeams,
+                          openTeamPage: openTeamPage,
+                        ),
+                        onHorizontalDragEnd: (details) {
+                          if (details.primaryVelocity! > 0) {
+                            setState(() {
+                              _controller.previousPage(
+                                  duration: const Duration(milliseconds: 500),
+                                  curve: Curves.easeInOut);
+                            });
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),

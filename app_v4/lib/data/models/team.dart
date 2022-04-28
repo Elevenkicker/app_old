@@ -1,6 +1,12 @@
+import 'package:app_v4/data/models/player.dart';
+
+import 'game.dart';
+
 class Team {
   Team({
     this.regionName,
+    this.teamLogo,
+    this.leagueName,
     this.leagueId,
     this.clubId,
     this.teamId,
@@ -9,6 +15,8 @@ class Team {
     this.teamName2,
     this.igUsername,
     this.fbUsername,
+    this.squadList,
+    this.games,
   });
 
   bool isFavourite = false;
@@ -17,12 +25,16 @@ class Team {
   late int regionId = 1;
 
   late String? clubId;
+  late String? teamLogo;
   late int? leagueId;
+  late String? leagueName;
   late String? officialTeamName;
   late String? regionName;
   late String? teamId;
   late int? teamName1;
   late String? teamName2;
+  late List<Player>? squadList;
+  late List<Game>? games;
 
   Team.fromJson(Map value)
       : clubId = value['clubId'],

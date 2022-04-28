@@ -27,7 +27,7 @@ class AppRouter extends _i2.RootStackRouter {
 
   @override
   final Map<String, _i2.PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
+    Home.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.Home());
     },
@@ -85,10 +85,10 @@ class AppRouter extends _i2.RootStackRouter {
 
   @override
   List<_i2.RouteConfig> get routes => [
-        _i2.RouteConfig(HomeRoute.name, path: '/', children: [
+        _i2.RouteConfig(Home.name, path: '/', children: [
           _i2.RouteConfig(FavouritesRouter.name,
               path: 'favourites',
-              parent: HomeRoute.name,
+              parent: Home.name,
               children: [
                 _i2.RouteConfig(FavouritesRoute.name,
                     path: '', parent: FavouritesRouter.name),
@@ -99,7 +99,7 @@ class AppRouter extends _i2.RootStackRouter {
               ]),
           _i2.RouteConfig(SearchRouter.name,
               path: 'search',
-              parent: HomeRoute.name,
+              parent: Home.name,
               children: [
                 _i2.RouteConfig(SearchRoute.name,
                     path: '', parent: SearchRouter.name),
@@ -110,7 +110,7 @@ class AppRouter extends _i2.RootStackRouter {
               ]),
           _i2.RouteConfig(MatchesRouter.name,
               path: 'matches',
-              parent: HomeRoute.name,
+              parent: Home.name,
               children: [
                 _i2.RouteConfig(MatchesRoute.name,
                     path: '', parent: MatchesRouter.name),
@@ -123,11 +123,11 @@ class AppRouter extends _i2.RootStackRouter {
 
 /// generated route for
 /// [_i1.Home]
-class HomeRoute extends _i2.PageRouteInfo<void> {
-  const HomeRoute({List<_i2.PageRouteInfo>? children})
-      : super(HomeRoute.name, path: '/', initialChildren: children);
+class Home extends _i2.PageRouteInfo<void> {
+  const Home({List<_i2.PageRouteInfo>? children})
+      : super(Home.name, path: '/', initialChildren: children);
 
-  static const String name = 'HomeRoute';
+  static const String name = 'Home';
 }
 
 /// generated route for

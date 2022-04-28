@@ -21,7 +21,7 @@ class FollowedLeaguesField extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: Column(
           children: [
-            const Text("Players",
+            const Text("Leagues",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,

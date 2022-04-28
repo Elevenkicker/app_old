@@ -71,4 +71,4 @@ import '../pages/teamPage/team_page.dart';
     ),
   ],
 )
-class AppRouter {}
+class $AppRouter {}

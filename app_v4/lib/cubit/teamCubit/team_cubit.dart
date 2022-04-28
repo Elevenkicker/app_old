@@ -9,13 +9,17 @@ class TeamCubit extends Cubit<TeamState> {
 
   TeamCubit() : super(TeamLoading());
 
-  // void fetchTeam(String teamId) {
-  //   emit(TeamLoading());
-  //   Timer(
-  //       const Duration(seconds: 1),
-  //       () => repository.fetchTeam(teamId).then((team) {
-  //             print(team);
-  //             emit(TeamLoaded(team: team));
-  //           }));
-  // }
+  void fetchTeam(String teamId) async {
+    emit(TeamLoading());
+    Team team = await repository.fetchTeam(teamId);
+    // League leagueofTeam = await repository.fetchTeamLeague(team.leagueId);
+    Map<String, String> leagueTeamNames =
+        await repository.getleagueTeamNames(team.leagueId);
+
+    emit(TeamLoaded(
+      team: team,
+      // leagueOfTeam: leagueofTeam,
+      leagueTeamNames: leagueTeamNames,
+    ));
+  }
 }

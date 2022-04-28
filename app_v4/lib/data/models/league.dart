@@ -25,9 +25,7 @@ class League {
   League.fromJson(Map json)
       : isActive = json['isActive'],
         leagueType = json['leagueType'],
-        leagueName = json['leagueName'].runtimeType == null
-            ? 'Kein Name'
-            : json['leagueName'],
+        leagueName = json['leagueName'],
         leagueHeight = json['leagueHeight'],
         leagueId =
             json['leagueId'].runtimeType == String ? null : json['leagueId'],

@@ -16,7 +16,7 @@ class SearchCubit extends Cubit<SearchState> {
   void fetchData() {
     emit(SearchLoading());
     Timer(
-        const Duration(seconds: 1),
+        const Duration(seconds: 0),
         () => repository.fetchData().then((regionList) {
               emit(SearchLoaded(regionsList: regionList));
             }));

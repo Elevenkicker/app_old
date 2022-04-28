@@ -1,9 +1,9 @@
+import 'package:app_v4/presentation/pages/teamPage/widgets/games/games_tab.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../cubit/teamCubit/team_cubit.dart';
-import 'widgets/1overview_tab.dart';
+import 'widgets/overview_tab.dart';
 import 'widgets/header_field.dart';
 
 class TeamPage extends StatelessWidget {
@@ -16,13 +16,14 @@ class TeamPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // BlocProvider.of<TeamCubit>(context).fetchTeam(teamId);
+    BlocProvider.of<TeamCubit>(context).fetchTeam(teamId);
     return BlocBuilder<TeamCubit, TeamState>(
       builder: (context, state) {
         if (state is! TeamLoaded) {
           return const Scaffold(
-              backgroundColor: Color.fromRGBO(16, 38, 102, 1),
-              body: Center(child: CircularProgressIndicator()));
+            backgroundColor: Color.fromRGBO(16, 38, 102, 1),
+            body: Center(child: CircularProgressIndicator()),
+          );
         }
         return DefaultTabController(
           length: 4,
@@ -52,7 +53,10 @@ class TeamPage extends StatelessWidget {
                     children: [
                       OverviewTab(teamId),
                       const Center(child: Text("Tabelle")),
-                      const Center(child: Text("Spiele")),
+                      GamesTab(
+                        team: state.team,
+                        leagueTeamNames: state.leagueTeamNames,
+                      ),
                       const Center(child: Text("Kader")),
                     ],
                   ),
